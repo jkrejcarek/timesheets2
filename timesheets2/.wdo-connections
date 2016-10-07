@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections:connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connections="http://www.ibm.com/websphere/wdo/connections">
+  <connection id="TimesheetsDatabase">
+    <development xsi:type="connections:rsc-live-connection" id="TimesheetsDatabase_dev" name="TimesheetsDatabase"/>
+    <runtime xsi:type="connections:driver-manager-connection" auto-deploy="true" class-location="C:\lib\postgresql-9.4-1204.jdbc42.jar" id="TimesheetsDatabase_runtime" class-name="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/pokusy" userid="pg"/>
+  </connection>
+</connections:connections>
