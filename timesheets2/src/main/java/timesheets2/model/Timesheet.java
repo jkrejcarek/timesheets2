@@ -1,43 +1,89 @@
 package timesheets2.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Named(value="timesheet")
-@SessionScoped
-@Entity(name="timesheets")
+@RequestScoped
+@Entity(name="timesheet")
 public class Timesheet implements Serializable {
 	
 	@Transient
 	@Inject private TimesheetService service;
 	
-	@Id
+	@TableGenerator(name="Timesheets_Gen",
+			table="identities",
+		    pkColumnName="gen_name",
+		    valueColumnName="gen_val",
+		    pkColumnValue="Timesheets_Gen",
+		    initialValue=1,
+		    allocationSize=100)
+	@Id @GeneratedValue(generator="Timesheets_Gen")
 	int id;
-	private String subject;
+	private String title;
 	private double hours;
+	private String description;
+	
+	@Transient
+	private Activity activity;
+	
+	@Column(name="id_activity")
+	private int activityID;
+	
+	@Column(name="id_project")
+	private int projectID;
+	
+	@Transient
+	private Project project;
+	
+	@Temporal(TemporalType.DATE)
+	private Date date;
 	
 	public Timesheet() {
-		id = 1;
-		hours = 1;
+		date = Calendar.getInstance().getTime();
 	}
 	
+	public List<Activity> getActivities() {
+		return service.getAllActivities();
+	}
+	
+	public List<Project> getProjects() {
+		return service.getAllProjects();
+	}
+	
+	public int getActivityID() {
+		return activityID;
+	}
+
+	public void setActivityID(int activityID) {
+		this.activityID = activityID;
+	}
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSubject() {
-		return subject;
+	public String getTitle() {
+		return title;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public double getHours() {
 		return hours;
@@ -46,8 +92,46 @@ public class Timesheet implements Serializable {
 		this.hours = hours;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public Activity getActivity() {
+		return activity;
+	}
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	
+	
+	public int getProjectID() {
+		return projectID;
+	}
+
+	public void setProjectID(int projectID) {
+		this.projectID = projectID;
+	}
+
 	public String add() {
-		System.out.println("Adding book " + getSubject());
+		System.out.println("Adding timesheet " + getTitle());
 		service.addTimesheet(this);
 		return "list.xhtml";
 	}

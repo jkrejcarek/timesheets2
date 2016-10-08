@@ -21,9 +21,9 @@
 	<data-source>
 		<name>java:app/jdbc/TimesheetsDatabase</name>
 		<class-name>org.postgresql.Driver</class-name>
-		<url>jdbc:postgresql://localhost:5432/pokusy</url>
-		<user>pg</user>
-		<password>postgres</password>
+		<url>jdbc:postgresql://localhost:5432/timesheets</url>
+		<user>timesheets</user>
+		<password>timesheets</password>
 	</data-source>
 	<env-entry>
 		<description>

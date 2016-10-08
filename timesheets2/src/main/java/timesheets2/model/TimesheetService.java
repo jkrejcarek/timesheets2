@@ -1,37 +1,27 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- *  contributor license agreements.  See the NOTICE file distributed with
- *  this work for additional information regarding copyright ownership.
- *  The ASF licenses this file to You under the Apache License, Version 2.0
- *  (the "License"); you may not use this file except in compliance with
- *  the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- */
 package timesheets2.model;
 
 import java.io.Serializable;
 import java.util.List;
 
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
 
-@Stateless
+@Singleton
 public class TimesheetService implements Serializable {
 
-    @PersistenceContext(unitName = "timesheets2")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6089364104209696364L;
+	@PersistenceContext(unitName = "timesheets2")
     private EntityManager entityManager;
 
     public void addTimesheet(Timesheet timesheet) {
+    	System.out.println("Service adding timesheet with id " + timesheet.getId());
       entityManager.persist(timesheet);
     }
 
@@ -41,5 +31,20 @@ public class TimesheetService implements Serializable {
         return entityManager.createQuery(cq).getResultList();
     }
     
-
+    public List<Project> getAllProjects() {
+        CriteriaQuery<Project> cq = entityManager.getCriteriaBuilder().createQuery(Project.class);
+        cq.select(cq.from(Project.class));
+        return entityManager.createQuery(cq).getResultList();
+    }
+    
+    public List<Activity> getAllActivities() {
+    	CriteriaQuery<Activity> cq = entityManager.getCriteriaBuilder().createQuery(Activity.class);
+    	cq.select(cq.from(Activity.class));
+    	List<Activity> result = entityManager.createQuery(cq).getResultList();
+    	
+    	System.out.println("Found activities: " + result.toString());
+    	
+    	return result;
+    }
+    
 }

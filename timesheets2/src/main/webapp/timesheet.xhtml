@@ -8,7 +8,7 @@
 <h:head>
 	<title>Timesheets</title>
 	<meta name="author" content="The Author"></meta>
-	<h:outputStylesheet library="css" name="style.css"  /> 
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body style="padding: 60px;">
 	<b:navBar brand="Timesheets" brandHref="#" fixed="top" inverse="true">
@@ -24,9 +24,40 @@
 				<f:view>
 					<h:form>
 						<div class="form-group">
-							<label><h:outputText value='Popis' /></label>
-							<b:inputText placeholder="Název" value="#{timesheet.subject}" />
+							<label><h:outputText value='Název' /></label>
+							<b:inputText placeholder="Název" value="#{timesheet.title}" />
 						</div>
+						
+						<div class="form-group">
+							<label><h:outputText value='Datum' /></label>
+							<b:dateTimePicker value="#{timesheet.date}" show-time="false"/>
+						</div>
+						<div class="form-group">
+							<label><h:outputText value='Hodin' /></label>
+							<b:inputText value="#{timesheet.hours}" />
+						</div>
+
+						<div class="form-group">
+							<label><h:outputText value='Aktivita' /></label>
+							<b:selectOneMenu value="#{timesheet.activityID}" id="activityID">
+								<f:selectItems value="#{timesheet.activities}" var="activity"
+									itemValue="#{activity.id}" itemLabel="#{activity.name}" />
+							</b:selectOneMenu>
+						</div>
+
+						<div class="form-group">
+							<label><h:outputText value='Projekt' /></label>
+							<b:selectOneMenu value="#{timesheet.projectID}" id="projectID">
+								<f:selectItems value="#{timesheet.projects}" var="project"
+									itemValue="#{project.id}" itemLabel="#{project.name}" />
+							</b:selectOneMenu>
+						</div>
+						<div class="form-group">
+							<label><h:outputText value='Detail' /></label>
+						<b:inputTextarea placeholder="Detail" value="#{timesheet.description}" rows="5">
+						</b:inputTextarea>
+						</div>
+
 
 						<div class="form-group">
 							<b:commandButton value="Add" action="#{timesheet.add}" />
