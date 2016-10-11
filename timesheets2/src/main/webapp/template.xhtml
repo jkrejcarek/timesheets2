@@ -42,9 +42,11 @@
 				<li><input type="text" class="ts-sidebar-search"
 					placeholder="Search here..." /></li>
 				<li class="ts-label">Main</li>
-				<b:navLink href="list.xhtml" value="Seznam" icon="globe"
+				<b:navLink href="#{request.contextPath}/list.xhtml" value="Výkazy" icon="globe"
 					iconAlign="left" />
-				<b:navLink href="timesheet.xhtml" value="Nový výkaz" icon="globe"
+				<b:navLink href="#{request.contextPath}/timesheet.xhtml" value="Nový výkaz" icon="globe"
+					iconAlign="left" />
+				<b:navLink href="#{request.contextPath}/admin/projects.xhtml" value="Projekty" icon="globe"
 					iconAlign="left" />
 					
 					<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level

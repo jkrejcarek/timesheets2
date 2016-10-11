@@ -35,28 +35,28 @@ public class SidebarMenuRenderer extends Renderer {
 	public void encodeChildren(FacesContext context, UIComponent component) throws IOException {
 		SidebarMenu menu = (SidebarMenu) component;
 		int childCount = menu.getChildCount();
-		System.out.println("Menu children count: " + childCount);
-		if (childCount == 0)
+		if (childCount == 0) {
 			return;
+		}
 
+		String appPath = context.getExternalContext().getApplicationContextPath();
 		String viewId = context.getViewRoot().getViewId();
-		System.out.println("View ID: " + viewId);
+		String path = appPath + viewId;	//complete page path
 
 		ResponseWriter writer = context.getResponseWriter();
+		
 		List<UIComponent> children = menu.getChildren();
 		writer.startElement("ul", menu);
 		writer.writeAttribute("class", "ts-sidebar-menu", null);
 
 		for (UIComponent c : children) {
-			System.out.println("child " + c.getClass().getName());
 			writer.startElement("li", menu);
 
 			if (c instanceof NavLink) {
 				NavLink navLink = (NavLink) c;
-				String href = navLink.getHref();
-				System.out.println("nav link with href " + href);
+				String href = navLink.getHref().toLowerCase();
 				
-				if (viewId.equalsIgnoreCase("/" + href)) {
+				if (path.equalsIgnoreCase(href)) {
 					writer.writeAttribute("class", "open", null);
 				}
 			}
