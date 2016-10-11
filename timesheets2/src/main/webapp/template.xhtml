@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<!-- 	<h:outputScript library="js" name="/jquery.min.js"></h:outputScript>
+		<h:outputScript library="js" name="/bootstrap.min.js"></h:outputScript>
+	<h:outputStylesheet library="css" name="font-awesome.min.css"></h:outputStylesheet> -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+<h:body bgcolor="white">
+	<f:view>
+		<div class="brand clearfix">
+			<a href="index.html" class="logo"><img src="img/logo.jpg"
+				class="img-responsive" alt="" /></a> <span class="menu-btn"><i
+				class="fa fa-bars"></i></span>
+			<ul class="ts-profile-nav">
+				<li><a href="#">Help</a></li>
+				<li><a href="#">Settings</a></li>
+				<li class="ts-account"><a href="#"><img
+						src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
+						Account <i class="fa fa-angle-down hidden-side"></i></a>
+					<ul>
+						<li><a href="#">My Account</a></li>
+						<li><a href="#">Edit Account</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<div class="ts-main-content">
+			<nav class="ts-sidebar">
+			<ul class="ts-sidebar-menu">
+				<li class="ts-label">Search</li>
+				<li><input type="text" class="ts-sidebar-search"
+					placeholder="Search here..." /></li>
+				<li class="ts-label">Main</li>
+				<li><a href="index.html"><i class="fa fa-dashboard"></i>
+						Dashboard</a></li>
+				<li><a href="#"><i class="fa fa-desktop"></i> UI Elements</a>
+					<ul>
+						<b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+							icon="globe" iconAlign="left" />
+						<li><a href="panels.html">Panels and Wells</a></li>
+						<li><a href="buttons.html">Buttons</a></li>
+						<li><a href="notifications.html">Notifications</a></li>
+						<li><a href="typography.html">Typography</a></li>
+						<li><a href="icon.html">Icon</a></li>
+						<li><a href="grid.html">Grid</a></li>
+					</ul></li>
+				<li><a href="tables.html"><i class="fa fa-table"></i>
+						Tables</a></li>
+				<li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
+				<li><a href="charts.html"><i class="fa fa-pie-chart"></i>
+						Charts</a></li>
+				<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level
+						Dropdown</a>
+					<ul>
+						<li><a href="#">2nd level</a></li>
+						<li><a href="#">2nd level</a></li>
+						<li><a href="#">3rd level</a>
+							<ul>
+								<li><a href="#">3rd level</a></li>
+								<li><a href="#">3rd level</a></li>
+							</ul></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-files-o"></i> Sample Pages</a>
+					<ul>
+						<li><a href="blank.html">Blank page</a></li>
+						<li><a href="login.html">Login page</a></li>
+					</ul></li>
+
+				<!-- Account from above -->
+				<ul class="ts-profile-nav">
+					<li><a href="#">Help</a></li>
+					<li><a href="#">Settings</a></li>
+					<li class="ts-account"><a href="#"><img
+							src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
+							Account <i class="fa fa-angle-down hidden-side"></i></a>
+						<ul>
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Edit Account</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul></li>
+				</ul>
+
+			</ul>
+			</nav>
+			<div class="content-wrapper">
+				<div class="container-fluid">
+					<ui:insert name="body">Body</ui:insert>
+				</div>
+			</div>
+		</div>
+		
+		<h:outputScript library="js" name="/main.js"></h:outputScript>
+	</f:view>
+</h:body>
+</html>

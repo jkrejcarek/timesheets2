@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900,100italic,300italic,400italic);
-@import url(https://fonts.googleapis.com/css?family=Oswald:700,400,300);
+/* @import url(https://fonts.googleapis.com/css?family=Oswald:700,400,300); */
 /****************************
 *   FOR RESPONSIVENESS      *
 ****************************/
@@ -49,7 +49,7 @@ a:hover {
 *      Buttons        *
 ****************************/
 .btn {
-  font-family: 'Oswald', sans-serif;
+ /* font-family: 'Oswald', sans-serif; */
 }
 .btn i {
   position: relative;
@@ -166,7 +166,7 @@ a:hover {
 *      Text size color        *
 ****************************/
 .font-one {
-  font-family: 'Oswald', sans-serif;
+ /*  font-family: 'Oswald', sans-serif; */
 }
 .text-bold {
   font-weight: bold;
@@ -320,7 +320,7 @@ a:hover {
 .content-format h4,
 .content-format h5,
 .content-format h6 {
-  font-family: 'Oswald', sans-serif;
+ /*  font-family: 'Oswald', sans-serif; */
   font-weight: 700;
   font-weight: bold;
   font-style: normal;
