@@ -5,6 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ts="http://cz.jankrejcarek.timesheets"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
@@ -35,12 +36,37 @@
 			</ul>
 		</div>
 		<div class="ts-main-content">
-			<nav class="ts-sidebar">
+
+			<ts:sidebarmenu>
+				<li class="ts-label">Search</li>
+				<li><input type="text" class="ts-sidebar-search"
+					placeholder="Search here..." /></li>
+				<li class="ts-label">Main</li>
+				<b:navLink href="list.xhtml" value="Seznam" icon="globe"
+					iconAlign="left" />
+				<b:navLink href="timesheet.xhtml" value="Nový výkaz" icon="globe"
+					iconAlign="left" />
+					
+					<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level
+						Dropdown</a>
+					<ul>
+						<li><a href="list.xhtml">2nd level list</a></li>
+						<li><a href="timesheet.xhtml">2nd level ts</a></li>
+						<li><a href="#">3rd level</a>
+							<ul>
+								<li><a href="#">3rd level</a></li>
+								<li><a href="#">3rd level</a></li>
+							</ul></li>
+					</ul></li>
+			</ts:sidebarmenu>
+
+			<!-- 	<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
 				<li class="ts-label">Search</li>
 				<li><input type="text" class="ts-sidebar-search"
 					placeholder="Search here..." /></li>
 				<li class="ts-label">Main</li>
+				<li><a href="timesheet.xhtml">Nový výkaz</a></li>
 				<li><a href="index.html"><i class="fa fa-dashboard"></i>
 						Dashboard</a></li>
 				<li><a href="#"><i class="fa fa-desktop"></i> UI Elements</a>
@@ -76,7 +102,7 @@
 						<li><a href="login.html">Login page</a></li>
 					</ul></li>
 
-				<!-- Account from above -->
+				Account from above
 				<ul class="ts-profile-nav">
 					<li><a href="#">Help</a></li>
 					<li><a href="#">Settings</a></li>
@@ -91,14 +117,14 @@
 				</ul>
 
 			</ul>
-			</nav>
+			</nav> -->
 			<div class="content-wrapper">
 				<div class="container-fluid">
 					<ui:insert name="body">Body</ui:insert>
 				</div>
 			</div>
 		</div>
-		
+
 		<h:outputScript library="js" name="/main.js"></h:outputScript>
 	</f:view>
 </h:body>
