@@ -6,7 +6,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ts="http://cz.jankrejcarek.timesheets"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:em="http://xmlns.jcp.org/jsf/composite/emcomp">
 
 <h:head>
 	<!-- 	<h:outputScript library="js" name="/jquery.min.js"></h:outputScript>
@@ -18,39 +19,23 @@
 
 <h:body bgcolor="white">
 	<f:view>
-		<div class="brand clearfix">
-			<a href="index.html" class="logo"><img src="img/logo.jpg"
-				class="img-responsive" alt="" /></a> <span class="menu-btn"><i
-				class="fa fa-bars"></i></span>
-			<ul class="ts-profile-nav">
-				<li><a href="#">Help</a></li>
-				<li><a href="#">Settings</a></li>
-				<li class="ts-account"><a href="#"><img
-						src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
-						Account <i class="fa fa-angle-down hidden-side"></i></a>
-					<ul>
-						<li><a href="#">My Account</a></li>
-						<li><a href="#">Edit Account</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul></li>
-			</ul>
-		</div>
-		<div class="ts-main-content">
+		<em:header />
 
+		<div class="ts-main-content">
 			<ts:sidebarmenu>
 				<ts:menusearch target="search.xhtml" parameterName="query">
-					<ts:menulabel>Search</ts:menulabel>		
-				</ts:menusearch>		
+					<ts:menulabel>Search</ts:menulabel>
+				</ts:menusearch>
 
 				<ts:menulabel>Main</ts:menulabel>
-				<b:navLink href="#{request.contextPath}/list.xhtml" value="Výkazy" icon="globe"
-					iconAlign="left" />
-				<b:navLink href="#{request.contextPath}/timesheet.xhtml" value="Nový výkaz" icon="globe"
-					iconAlign="left" />
-				<b:navLink href="#{request.contextPath}/admin/projects.xhtml" value="Projekty" icon="globe"
-					iconAlign="left" />
-					
-					<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level
+				<b:navLink href="#{request.contextPath}/list.xhtml" value="Výkazy"
+					icon="globe" iconAlign="left" />
+				<b:navLink href="#{request.contextPath}/timesheet.xhtml"
+					value="Nový výkaz" icon="globe" iconAlign="left" />
+				<b:navLink href="#{request.contextPath}/admin/projects.xhtml"
+					value="Projekty" icon="globe" iconAlign="left" />
+
+				<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level
 						Dropdown</a>
 					<ul>
 						<li><a href="list.xhtml">2nd level list</a></li>
@@ -60,9 +45,9 @@
 								<li><a href="#">3rd level</a></li>
 								<li><a href="#">3rd level</a></li>
 							</ul></li>
-					</ul></li>					
+					</ul></li>
 			</ts:sidebarmenu>
-			
+
 			<div class="content-wrapper">
 				<div class="container-fluid">
 					<ui:insert name="body">Body</ui:insert>
