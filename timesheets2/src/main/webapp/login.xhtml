@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ts="http://cz.jankrejcarek.timesheets"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<!-- 	<h:outputScript library="js" name="/jquery.min.js"></h:outputScript>
+		<h:outputScript library="js" name="/bootstrap.min.js"></h:outputScript>
+	<h:outputStylesheet library="css" name="font-awesome.min.css"></h:outputStylesheet> -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+<h:body bgcolor="white">
+	<f:view>
+		<div class="login-page bk-img"
+			style="background-image: url(img/login-bg.jpg);">
+			<div class="form-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<h1 class="text-center text-bold text-light mt-4x">Sign in</h1>
+							<div class="well row pt-2x pb-3x bk-light">
+								<div class="col-md-8 col-md-offset-2">
+									<form method="post" action="j_security_check" class="mt">
+										<label for="" class="text-uppercase text-sm">Your
+											Username or Email</label> <input type="text" placeholder="Username"
+											name="j_username" class="form-control mb" /> <label for=""
+											class="text-uppercase text-sm">Password</label> <input
+											type="password" size="20" name="j_password"
+											class="form-control mb" />
+										<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:view>
+</h:body>
+</html>
