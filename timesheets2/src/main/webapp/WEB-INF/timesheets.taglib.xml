@@ -8,4 +8,18 @@
             <renderer-type>SidebarMenuNavigation</renderer-type>
          </component>
      </tag>   
+    <tag>
+        <tag-name>menulabel</tag-name>
+        <component>
+            <component-type>SidebarMenuLabel</component-type>
+            <renderer-type>SidebarMenuLabel</renderer-type>
+         </component>
+     </tag>   
+    <tag>
+        <tag-name>menusearch</tag-name>
+        <component>
+            <component-type>SidebarMenuSearch</component-type>
+            <renderer-type>SidebarMenuSearch</renderer-type>
+         </component>
+     </tag>   
 </facelet-taglib>
