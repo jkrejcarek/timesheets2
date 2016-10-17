@@ -22,7 +22,11 @@
 			<ul class="ts-profile-nav">
 				<li><a href="#">Nastavení</a></li>
 				<li class="ts-account">
-					<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />Profil<i class="fa fa-angle-down hidden-side"></i></a>
+					<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
+					<h:outputText value='#{securityBean.userName}' rendered="#{securityBean.loggedIn}"/>
+					<h:outputText value='Profil' rendered="#{not securityBean.loggedIn}"/>
+					
+					<i class="fa fa-angle-down hidden-side"></i></a>
 					<ul>
 						<li><a href="#">Můj profil</a></li>
 						<li><a href="#">Změnit</a></li>
