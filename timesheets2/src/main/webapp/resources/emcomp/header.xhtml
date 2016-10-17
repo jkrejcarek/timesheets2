@@ -17,12 +17,12 @@
 
 	<composite:implementation>
 		<div class="brand clearfix">
-			<a href="list.xhtml" class="logo"><img src="img/logo.jpg" class="img-responsive" alt="" /></a>
+			<a href="#{request.contextPath}/ts/list.xhtml" class="logo"><img src="#{request.contextPath}/img/logo.jpg" class="img-responsive" alt="" /></a>
 			<span class="menu-btn"><i class="fa fa-bars"></i></span>
 			<ul class="ts-profile-nav">
 				<li><a href="#">Nastavení</a></li>
 				<li class="ts-account">
-					<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
+					<a href="#"><img src="#{request.contextPath}/img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
 					<h:outputText value='#{securityBean.userName}' rendered="#{securityBean.loggedIn}"/>
 					<h:outputText value='Profil' rendered="#{not securityBean.loggedIn}"/>
 					

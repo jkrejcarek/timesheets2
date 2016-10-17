@@ -5,29 +5,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-@Named(value="timesheet")
-@RequestScoped
 @Entity(name="timesheet")
 public class Timesheet implements Serializable {
-	
-	@Transient
-	@Inject private TimesheetService service;
 	
 	@TableGenerator(name="Timesheets_Gen",
 			table="identities",
@@ -46,12 +39,6 @@ public class Timesheet implements Serializable {
 	@JoinColumn(name="id_activity")
 	private Activity activity = new Activity();
 	
-	//@Column(name="id_activity")
-	@Transient private int activityID;
-	
-	//@Column(name="id_project")
-	@Transient private int projectID;
-	
 	@ManyToOne
 	@JoinColumn(name="id_project")
 	private Project project = new Project();
@@ -63,22 +50,6 @@ public class Timesheet implements Serializable {
 		date = Calendar.getInstance().getTime();
 	}
 	
-	public List<Activity> getActivities() {
-		return service.getAllActivities();
-	}
-	
-	public List<Project> getProjects() {
-		return service.getAllProjects();
-	}
-	
-	public int getActivityID() {
-		return activityID;
-	}
-
-	public void setActivityID(int activityID) {
-		this.activityID = activityID;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -126,16 +97,9 @@ public class Timesheet implements Serializable {
 		this.date = date;
 	}
 	
-	public int getProjectID() {
-		return projectID;
-	}
 
-	public void setProjectID(int projectID) {
-		this.projectID = projectID;
-	}
-
-	public String add() {
-		service.addTimesheet(this);
-		return "list.xhtml";
+	@Override
+	public String toString() {
+		return "Timesheet [id=" + id + ", title=" + title + ", hours=" + hours + ", date=" + date + "]";
 	}
 }

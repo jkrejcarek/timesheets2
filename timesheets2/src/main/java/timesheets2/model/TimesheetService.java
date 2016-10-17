@@ -2,6 +2,7 @@ package timesheets2.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.ejb.Singleton;
 import javax.ejb.Stateless;
@@ -11,6 +12,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
 
 
 @Singleton
@@ -26,6 +28,10 @@ public class TimesheetService implements Serializable {
     public void addTimesheet(Timesheet timesheet) {
     	System.out.println("Service adding timesheet with id " + timesheet.getId());
       entityManager.persist(timesheet);
+    }
+    
+    public void updateTimesheet(Timesheet timesheet) {
+    	entityManager.merge(timesheet);
     }
 
     public List<Timesheet> getAllTimesheets() {
@@ -59,9 +65,11 @@ public class TimesheetService implements Serializable {
     	cq.select(cq.from(Activity.class));
     	List<Activity> result = entityManager.createQuery(cq).getResultList();
     	
-    	System.out.println("Found activities: " + result.toString());
-    	
     	return result;
     }
+    
+    public Timesheet getTimesheet(int id) {		
+		return entityManager.find(Timesheet.class, id);
+	}
     
 }

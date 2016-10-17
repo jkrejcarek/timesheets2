@@ -8,7 +8,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-	<ui:composition template="./template.xhtml">
+	<ui:composition template="/template.xhtml">
 		<ui:define name="body">
 			<h:form>
 				<h2>Timesheets</h2>
@@ -19,7 +19,7 @@
 						</h:outputText>
 					</b:dataTableColumn>
 					<b:dataTableColumn label="Nadpis">
-						<h:link value="#{ts.title}" outcome="timesheet">
+						<h:link value="#{ts.title}" outcome="/ts/edit">
 							<f:param name="id" value="#{ts.id}" />
 						</h:link>
 					</b:dataTableColumn>
