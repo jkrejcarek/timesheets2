@@ -7,10 +7,9 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <f:metadata>
-	<f:viewParam id="id" name="id" value="#{controller.timesheet}"
-	converter="#{timesheetConverter}" converterMessage="Unknown product, please use a link from within the system."
-	required="true">		
+	<f:viewParam id="id" name="id" value="#{controller.id}">		
 	</f:viewParam>
+	<f:viewAction action="#{controller.onload}" />
 </f:metadata>
 <h:body>
 	<ui:composition template="/template.xhtml">

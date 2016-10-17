@@ -10,7 +10,8 @@ import javax.inject.Named;
 @Named(value="controller")
 @RequestScoped
 public class TimesheetsController {
-
+	private String id;
+	
 	private List<Activity> activities;
 	private List<Project> projects;
 	
@@ -43,6 +44,14 @@ public class TimesheetsController {
 		return "/ts/list.xhtml?faces-redirect=true";
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	@PostConstruct
 	public void init() {
 		if (timesheet == null) {
@@ -51,6 +60,12 @@ public class TimesheetsController {
 		
 		projects = service.getAllProjects();
 		activities = service.getAllActivities();
+	}
+	
+	public void onload() {
+		if (id != null && id.length() > 0) {
+			timesheet = service.getTimesheet(Integer.parseInt(id));
+		}
 	}
 	
 }
