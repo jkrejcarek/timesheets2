@@ -4,21 +4,40 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ts="http://cz.jankrejcarek.timesheets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
 	<ui:composition template="./template.xhtml">
 		<ui:define name="body">
 			<h:form>
-				<h:panelGrid columns="2">
-					<h:outputText value='Subject' />
-					<h:outputText value='#{timesheet.title}' />
-					<h:outputText value='#{securityBean.userName}' />
-					<h:outputText value='#{securityBean.loggedIn}' />
-				</h:panelGrid>
+				<h2>Timesheets</h2>
+				<b:dataTable value="#{timesheetsService.timesheets}" var="ts">
+					<b:dataTableColumn label="Datum">
+						<h:outputText value="#{ts.date}">
+							<f:convertDateTime type="date" />
+						</h:outputText>
+					</b:dataTableColumn>
+					<b:dataTableColumn label="Nadpis">
+						<h:link value="#{ts.title}" outcome="timesheet">
+							<f:param name="id" value="#{ts.id}" />
+						</h:link>
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<h:outputText value="#{ts.hours}" label="Hodin">
+							<f:convertNumber minFractionDigits="2" groupingUsed="true" />
+						</h:outputText>
+						</b:dataTableColumn>
+						<b:dataTableColumn label="Projekt">
+							<h:outputText value="#{ts.project.name}" label="Projekt"/>
+						</b:dataTableColumn>
+						<b:dataTableColumn label="Aktivita">
+							<h:outputText value="#{ts.activity.name}" label="Aktivita"/>
+						</b:dataTableColumn>
+				</b:dataTable>
 			</h:form>
 
-			
+
 		</ui:define>
 	</ui:composition>
 </h:body>

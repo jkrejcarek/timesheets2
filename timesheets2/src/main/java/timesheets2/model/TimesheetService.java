@@ -7,7 +7,10 @@ import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 
 @Singleton
@@ -29,6 +32,20 @@ public class TimesheetService implements Serializable {
         CriteriaQuery<Timesheet> cq = entityManager.getCriteriaBuilder().createQuery(Timesheet.class);
         cq.select(cq.from(Timesheet.class));
         return entityManager.createQuery(cq).getResultList();
+    }
+ 
+    public List<Timesheet> getLastTimesheets() {
+    	CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+    	
+    	CriteriaQuery<Timesheet> cq = builder.createQuery(Timesheet.class);
+    	Root<Timesheet> t = cq.from(Timesheet.class);
+    	cq.select(t);
+    	cq.orderBy(builder.desc(t.get("date")));
+    	
+    	TypedQuery<Timesheet> query = entityManager.createQuery(cq);
+    	query.setMaxResults(15);
+    	
+    	return query.getResultList();
     }
     
     public List<Project> getAllProjects() {

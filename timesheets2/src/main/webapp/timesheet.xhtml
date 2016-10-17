@@ -30,7 +30,7 @@
 
 							<div class="form-group">
 								<label><h:outputText value='Aktivita' /></label>
-								<b:selectOneMenu value="#{timesheet.activityID}" id="activityID">
+								<b:selectOneMenu value="#{timesheet.activity.id}" id="activityID">
 									<f:selectItems value="#{timesheet.activities}" var="activity"
 										itemValue="#{activity.id}" itemLabel="#{activity.name}" />
 								</b:selectOneMenu>
@@ -38,7 +38,7 @@
 
 							<div class="form-group">
 								<label><h:outputText value='Projekt' /></label>
-								<b:selectOneMenu value="#{timesheet.projectID}" id="projectID">
+								<b:selectOneMenu value="#{timesheet.project.id}" id="projectID">
 									<f:selectItems value="#{timesheet.projects}" var="project"
 										itemValue="#{project.id}" itemLabel="#{project.name}" />
 								</b:selectOneMenu>

@@ -12,6 +12,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,17 +42,19 @@ public class Timesheet implements Serializable {
 	private double hours;
 	private String description;
 	
-	@Transient
-	private Activity activity;
+	@ManyToOne
+	@JoinColumn(name="id_activity")
+	private Activity activity = new Activity();
 	
-	@Column(name="id_activity")
-	private int activityID;
+	//@Column(name="id_activity")
+	@Transient private int activityID;
 	
-	@Column(name="id_project")
-	private int projectID;
+	//@Column(name="id_project")
+	@Transient private int projectID;
 	
-	@Transient
-	private Project project;
+	@ManyToOne
+	@JoinColumn(name="id_project")
+	private Project project = new Project();
 	
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -119,8 +125,6 @@ public class Timesheet implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	
 	
 	public int getProjectID() {
 		return projectID;
@@ -131,7 +135,6 @@ public class Timesheet implements Serializable {
 	}
 
 	public String add() {
-		System.out.println("Adding timesheet " + getTitle());
 		service.addTimesheet(this);
 		return "list.xhtml";
 	}

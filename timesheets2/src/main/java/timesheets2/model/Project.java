@@ -10,7 +10,7 @@ public class Project {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int id;
+	private int id = -1;
 	private String name;
 	public int getId() {
 		return id;
