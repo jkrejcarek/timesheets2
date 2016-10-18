@@ -12,7 +12,7 @@
 		<ui:define name="body">
 			<h:form>
 				<h2>Timesheets</h2>
-				<b:dataTable value="#{timesheetsService.timesheets}" var="ts">
+				<b:dataTable value="#{timesheetsViewController.timesheets}" var="ts">
 					<b:dataTableColumn label="Datum">
 						<h:outputText value="#{ts.date}">
 							<f:convertDateTime type="date" />

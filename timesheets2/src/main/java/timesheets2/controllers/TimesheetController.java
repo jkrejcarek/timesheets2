@@ -14,7 +14,7 @@ import timesheets2.model.Timesheet;
 
 @Named(value="controller")
 @RequestScoped
-public class TimesheetsController {
+public class TimesheetController {
 	private String id;
 	
 	private List<Activity> activities;

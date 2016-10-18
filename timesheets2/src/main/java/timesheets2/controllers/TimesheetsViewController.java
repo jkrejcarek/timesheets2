@@ -1,4 +1,4 @@
-package timesheets2;
+package timesheets2.controllers;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import javax.inject.Named;
 import timesheets2.beans.TimesheetService;
 import timesheets2.model.Timesheet;
 
-@Named(value="timesheetsService")
+@Named
 @RequestScoped
-public class TimesheetsServiceBean {
+public class TimesheetsViewController {
 
 	@Inject TimesheetService service;
 	
