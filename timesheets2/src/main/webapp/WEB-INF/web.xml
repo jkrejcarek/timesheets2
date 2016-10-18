@@ -47,7 +47,7 @@
 		<display-name>Timesheet editing</display-name>
 		<web-resource-collection>
 			<web-resource-name>all</web-resource-name>
-			<url-pattern>/timesheet.xhtml</url-pattern>
+			<url-pattern>/ts/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>manager</role-name>
