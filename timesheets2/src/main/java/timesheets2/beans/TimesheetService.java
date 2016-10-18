@@ -1,4 +1,4 @@
-package timesheets2.model;
+package timesheets2.beans;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +12,10 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import timesheets2.model.Activity;
+import timesheets2.model.Project;
+import timesheets2.model.Timesheet;
 
 
 

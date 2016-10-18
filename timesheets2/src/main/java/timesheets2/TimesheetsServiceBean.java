@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import timesheets2.beans.TimesheetService;
 import timesheets2.model.Timesheet;
-import timesheets2.model.TimesheetService;
 
 @Named(value="timesheetsService")
 @RequestScoped
