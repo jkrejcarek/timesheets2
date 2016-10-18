@@ -13,11 +13,12 @@
 
 <h:body>
 	<composite:interface>
+		   <composite:attribute name="title" required="true"/>
 	</composite:interface>
 
 	<composite:implementation>
 		<div class="brand clearfix">
-			<a href="#{request.contextPath}/ts/list.xhtml" class="logo"><img src="#{request.contextPath}/img/logo.jpg" class="img-responsive" alt="" /></a>
+			<span class="logo"><h:outputText value="#{cc.attrs.title}"/></span>
 			<span class="menu-btn"><i class="fa fa-bars"></i></span>
 			<ul class="ts-profile-nav">
 				<li><a href="#">Nastavení</a></li>
