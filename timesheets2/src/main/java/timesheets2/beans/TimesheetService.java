@@ -48,6 +48,10 @@ public class TimesheetService implements Serializable {
     	entityManager.persist(project);
     }
     
+    public void add(Activity activity) {
+    	entityManager.persist(activity);
+    }
+    
     /**
      * Aktualizuje existujici vykaz v databazi
      * @param timesheet Vykaz pro aktualizaci, uz musel v databazi existovat
@@ -116,9 +120,15 @@ public class TimesheetService implements Serializable {
     public Project getProject(int id) {
     	return entityManager.find(Project.class, id);
     }
+    public Activity getActivity(int id) {
+    	return entityManager.find(Activity.class, id);
+    }
     
     public void update(Project project) {
     	entityManager.merge(project);
     }
     
+    public void update(Activity activity) {
+    	entityManager.merge(activity);
+    }
 }
