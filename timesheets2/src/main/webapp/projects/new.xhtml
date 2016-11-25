@@ -16,8 +16,7 @@
 					<div class="form-group">
 						<label><h:outputText value='Název' /></label>
 						<b:inputText id="txtProjectName" placeholder="Název"
-							value="#{pcontroller.project.name}" validator-message="Název projektu musí být uveden">
-								<f:validateRequired> </f:validateRequired>
+							value="#{pcontroller.project.name}" required="true" required-message="Název projektu musí být uveden" validator="#{pcontroller.validateName}">								
 							</b:inputText>
 							<h:message id="errorsName" for="txtProjectName" errorStyle="color:red"></h:message>
 					</div>
