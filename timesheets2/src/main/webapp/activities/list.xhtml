@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ts="http://cz.jankrejcarek.timesheets"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="body">
+			<h:form>
+				<h2 class="page-title">Aktivity</h2>
+				<b:dataTable value="#{activitiesViewController.activities}" var="act">
+					<b:dataTableColumn label="Název">
+						<h:link value="#{act.name}" outcome="edit">
+							<f:param name="id" value="#{act.id}" />
+						</h:link>
+					</b:dataTableColumn>					
+				</b:dataTable>
+				<b:commandButton value="New" action="new"/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+    <namespace>http://cz.jankrejcarek.timesheets</namespace>
+    <tag>
+        <tag-name>sidebarmenu</tag-name>
+        <component>
+            <component-type>SidebarMenu</component-type>
+            <renderer-type>SidebarMenuNavigation</renderer-type>
+         </component>
+     </tag>   
+    <tag>
+        <tag-name>menulabel</tag-name>
+        <component>
+            <component-type>SidebarMenuLabel</component-type>
+            <renderer-type>SidebarMenuLabel</renderer-type>
+         </component>
+     </tag>   
+    <tag>
+        <tag-name>menusearch</tag-name>
+        <component>
+            <component-type>SidebarMenuSearch</component-type>
+            <renderer-type>SidebarMenuSearch</renderer-type>
+         </component>
+     </tag>   
+</facelet-taglib>

@@ -8,7 +8,7 @@
 		<jta-data-source>java:app/jdbc/TimesheetsDatabase</jta-data-source>
 		<class>timesheets2.model.Timesheet</class>
 		<properties>
-			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.logging.level" value="INFO" />
 			<property name="eclipselink.target-database" value="PostgreSQL"/>
 		</properties>
 	</persistence-unit>

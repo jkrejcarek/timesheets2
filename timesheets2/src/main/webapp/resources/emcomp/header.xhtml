@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<composite:interface>
+		   <composite:attribute name="title" required="true"/>
+	</composite:interface>
+
+	<composite:implementation>
+		<div class="brand clearfix">
+			<span class="logo"><h:outputText value="#{cc.attrs.title}"/></span>
+			<span class="menu-btn"><i class="fa fa-bars"></i></span>
+			<ul class="ts-profile-nav">
+				<li><a href="#">Nastavení</a></li>
+				<li class="ts-account">
+					<a href="#"><img src="#{request.contextPath}/img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="" />
+					<h:outputText value='#{securityBean.userName}' rendered="#{securityBean.loggedIn}"/>
+					<h:outputText value='Profil' rendered="#{not securityBean.loggedIn}"/>
+					
+					<i class="fa fa-angle-down hidden-side"></i></a>
+					<ul>
+						<li><a href="#">Můj profil</a></li>
+						<li><a href="#">Změnit</a></li>
+						<li><a href="#">Odhlásit</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</composite:implementation>
+</h:body>
+</html>

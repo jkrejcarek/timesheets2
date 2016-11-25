@@ -21,15 +21,72 @@
 	<data-source>
 		<name>java:app/jdbc/TimesheetsDatabase</name>
 		<class-name>org.postgresql.Driver</class-name>
-		<url>jdbc:postgresql://localhost:5432/pokusy</url>
-		<user>pg</user>
-		<password>postgres</password>
+		<url>jdbc:postgresql://localhost:5432/timesheets</url>
+		<user>timesheets</user>
+		<password>timesheets</password>
 	</data-source>
 	<env-entry>
-		<description>
-		Auto Generated - SDO Datasource connection to jdbc:postgresql://localhost:5432/pokusy</description>
+		<description>Auto Generated - SDO Datasource connection to jdbc:postgresql://localhost:5432/pokusy</description>
 		<env-entry-name>TimesheetsDatabase</env-entry-name>
 		<env-entry-type>java.lang.String</env-entry-type>
-		<env-entry-value>jdbc:postgresql://localhost:5432/pokusy,org.postgresql.Driver,pg,postgres</env-entry-value>
+		<env-entry-value>jdbc:postgresql://localhost:5432/pokusy,org.postgresql.Driver,pg</env-entry-value>
 	</env-entry>
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>timesheets</realm-name>
+		<form-login-config>
+			<form-login-page>/login.xhtml</form-login-page>
+			<form-error-page>/loginerror.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<role-name>manager</role-name>
+	</security-role>
+	<security-role>
+		<description>Management of projects and activities</description>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>Timesheet editing</display-name>
+		<web-resource-collection>
+			<web-resource-name>all</web-resource-name>
+			<url-pattern>/ts/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>manager</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>Projects editing</display-name>
+		<web-resource-collection>
+			<web-resource-name>projects</web-resource-name>
+			<url-pattern>/projects/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<context-param>
+		<param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORYxx</param-name>
+		<param-value>/WEB-INF/resources</param-value>
+	</context-param>
+	<context-param>
+    <param-name>BootsFaces_THEME</param-name>
+    <param-value>custom</param-value>
+</context-param>
+<context-param>
+    <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+    <param-value>/WEB-INF/timesheets.taglib.xml</param-value>
+</context-param>
+	<security-constraint>
+		<display-name>Activities</display-name>
+		<web-resource-collection>
+			<web-resource-name>activities</web-resource-name>
+			<url-pattern>/activities/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
 </web-app>

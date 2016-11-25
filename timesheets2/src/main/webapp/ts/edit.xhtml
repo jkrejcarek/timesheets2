@@ -7,58 +7,58 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <f:metadata>
-	<f:viewParam id="id" name="id" value="#{timesheetsbean.id}">
+	<f:viewParam id="id" name="id" value="#{controller.id}">		
 	</f:viewParam>
-  <f:viewAction action="#{timesheetsbean.onload}" />
+	<f:viewAction action="#{controller.onload}" />
 </f:metadata>
-
 <h:body>
-	<ui:composition template="./template.xhtml">
+	<ui:composition template="/template.xhtml">
 		<ui:define name="body">
 			<b:row>
 				<b:column col-md="6" col-lg="4">
 					<h2 class="page-title">Timesheet</h2>
 					<f:view>
 						<h:form>
-							<b:inputText value="#{timesheet.id}" id="id" type="hidden" />
+							<b:inputText value="#{controller.timesheet.id}" id="id" type="hidden" />
 							<div class="form-group">
 								<label><h:outputText value='Název' /></label>
-								<b:inputText placeholder="Název" value="#{timesheet.title}" />
+								<b:inputText placeholder="Název" value="#{controller.timesheet.title}" />
 							</div>
 
 							<div class="form-group">
 								<label><h:outputText value='Datum' /></label>
-								<b:dateTimePicker value="#{timesheet.date}" show-time="false" />
+								<b:dateTimePicker value="#{controller.timesheet.date}" show-time="false" />
 							</div>
 							<div class="form-group">
 								<label><h:outputText value='Hodin' /></label>
-								<b:inputText value="#{timesheet.hours}" />
+								<b:inputText value="#{controller.timesheet.hours}" />
 							</div>
 
 							<div class="form-group">
 								<label><h:outputText value='Aktivita' /></label>
-								<b:selectOneMenu value="#{timesheet.activity.id}" id="activityID">
-									<f:selectItems value="#{timesheet.activities}" var="activity"
+								<b:selectOneMenu value="#{controller.timesheet.activity.id}" id="activityID">
+									<f:selectItems value="#{controller.activities}" var="activity"
 										itemValue="#{activity.id}" itemLabel="#{activity.name}" />
 								</b:selectOneMenu>
 							</div>
 
 							<div class="form-group">
 								<label><h:outputText value='Projekt' /></label>
-								<b:selectOneMenu value="#{timesheet.project.id}" id="projectID">
-									<f:selectItems value="#{timesheet.projects}" var="project"
+								<b:selectOneMenu value="#{controller.timesheet.project.id}" id="projectID">
+									<f:selectItems value="#{controller.projects}" var="project"
 										itemValue="#{project.id}" itemLabel="#{project.name}" />
 								</b:selectOneMenu>
 							</div>
 							<div class="form-group">
 								<label><h:outputText value='Detail' /></label>
 								<b:inputTextarea placeholder="Detail"
-									value="#{timesheet.description}" rows="5">
+									value="#{controller.timesheet.description}" rows="5">
 								</b:inputTextarea>
 							</div>
 
+
 							<div class="form-group">
-								<b:commandButton value="Add" action="#{timesheet.add}" />
+								<b:commandButton value="Save" action="#{controller.save}" />
 							</div>
 						</h:form>
 					</f:view>
