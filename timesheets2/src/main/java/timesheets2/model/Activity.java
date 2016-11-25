@@ -5,13 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 @Entity(name="activities")
 public class Activity {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="activities_id_seq")
-	@SequenceGenerator(name="activities_id_seq", sequenceName="activities_id_seq", allocationSize=1)
+	@TableGenerator(name="Activities_Gen",
+			table="identities",
+		    pkColumnName="gen_name",
+		    valueColumnName="gen_val",
+		    pkColumnValue="Activities_Gen",
+		    initialValue=1,
+		    allocationSize=3)
+	@Id @GeneratedValue(generator="Activities_Gen")
 	private int id;
 	private String name;
 	
