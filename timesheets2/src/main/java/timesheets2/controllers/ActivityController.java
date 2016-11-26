@@ -4,6 +4,10 @@ package timesheets2.controllers;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -59,6 +63,26 @@ public class ActivityController implements Serializable{
 		System.out.println("Created controller");
 		if (activity == null) {
 			activity = new Activity();
+		}
+	}
+	
+	/**
+	 * Kontroluje, jestli uvedený název již není použit. Funguje
+	 * u nově vytvářených projektů.
+	 * @param context
+	 * @param component 
+	 * @param value Název projektu který se testuje
+	 */
+	public void validateName(FacesContext context, UIComponent component, Object value) {
+		String activityName = (String) value;
+		
+		for (Activity tmpActivity : service.getAllActivities()) {
+			if (tmpActivity.getName().equalsIgnoreCase(activityName)) {
+				context.addMessage(component.getClientId(context), new FacesMessage("Aktivita '" + activityName + "' již existuje, použijte jiný název"));
+				UIInput input = (UIInput) component;
+				input.setValid(false);
+				return;
+			}
 		}
 	}
 	
