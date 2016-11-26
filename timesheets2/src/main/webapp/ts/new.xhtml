@@ -15,18 +15,23 @@
 					<f:view>
 						<h:form>
 							<b:inputText value="#{controller.timesheet.id}" id="id" type="hidden" />
+							<div>
+								<h:messages style="color:red;margin:8px;" />
+							</div>
 							<div class="form-group">
 								<label><h:outputText value='Název' /></label>
-								<b:inputText placeholder="Název" value="#{controller.timesheet.title}" />
+								<b:inputText id="txtTSName" placeholder="Název" value="#{controller.timesheet.title}" required="true" required-message="Název výkazu musí být uveden"/>
 							</div>
 
 							<div class="form-group">
 								<label><h:outputText value='Datum' /></label>
-								<b:dateTimePicker value="#{controller.timesheet.date}" show-time="false" />
+								<b:dateTimePicker value="#{controller.timesheet.date}" show-time="false" required="true" required-message="Datum musí být uvedeno"/>
 							</div>
 							<div class="form-group">
 								<label><h:outputText value='Hodin' /></label>
-								<b:inputText value="#{controller.timesheet.hours}" />
+								<b:inputText value="#{controller.timesheet.hours}" required="true" required-message="Počet hodin musí být uveden" validator-message="Počet hodin musí být vyšší než 0 a menší než 24">
+								<f:validateDoubleRange minimum="0.1" maximum="24"></f:validateDoubleRange>
+								</b:inputText>
 							</div>
 
 							<div class="form-group">
