@@ -4,6 +4,10 @@ package timesheets2.controllers;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -34,6 +38,26 @@ public class ProjectController implements Serializable{
 			service.add(project);
 		}
 		return "/projects/list.xhtml?faces-redirect=true";
+	}
+	
+	/**
+	 * Kontroluje, jestli uvedený název již není použit. Funguje
+	 * u nově vytvářených projektů.
+	 * @param context
+	 * @param component 
+	 * @param value Název projektu který se testuje
+	 */
+	public void validateName(FacesContext context, UIComponent component, Object value) {
+		String projectName = (String) value;
+		
+		for (Project tmpProject : service.getAllProjects()) {
+			if (tmpProject.getName().equalsIgnoreCase(projectName)) {
+				context.addMessage(component.getClientId(context), new FacesMessage("Projekt '" + projectName + "' již existuje, použijte jiný název"));
+				UIInput input = (UIInput) component;
+				input.setValid(false);
+				return;
+			}
+		}
 	}
 	
 	public String getId() {
