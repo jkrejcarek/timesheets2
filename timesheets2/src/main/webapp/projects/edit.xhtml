@@ -5,7 +5,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ts="http://cz.jankrejcarek.timesheets"
 	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:em="http://xmlns.jcp.org/jsf/composite/emcomp">
 
 <f:metadata>
 	<f:viewParam id="id" name="id" value="#{pcontroller.id}">
@@ -15,22 +16,19 @@
 <h:body>
 	<ui:composition template="/template.xhtml">
 		<ui:define name="body">
-			<h2 class="page-title">Projekt</h2>
-			<f:view>
+				<f:view>
+			<f:loadBundle basename="timesheets2.resources.Messages" var="bundle"/>
+			<h2 class="page-title"><h:outputText value="#{bundle.ProjectTitle}"/></h2>
 				<h:form>
-					<b:inputText value="#{pcontroller.project.id}" id="id"
-						type="hidden" />
 					<div class="form-group">
-						<label><h:outputText value='Název' /></label>
-						<b:inputText id="txtProjectName" placeholder="Název"
-							value="#{pcontroller.project.name}" required="true"
-							required-message="Název projektu musí být uveden">							
-						</b:inputText>
-						<h:message id="errorsName" for="txtProjectName"
-							errorStyle="color:red"></h:message>
+						<label><h:outputText value="#{bundle.ProjectLabelName}" /></label>
+						<b:inputText id="txtProjectName" placeholder="#{bundle.ProjectPlaceholderName}"
+							value="#{pcontroller.project.name}" required="true" required-message="#{bundle.ProjectErrorRequired}" validator="#{pcontroller.validateName}">
+							</b:inputText>
+							<h:message id="errorsName" for="txtProjectName" errorStyle="color:red"></h:message>
 					</div>
 					<div class="form-group">
-						<b:commandButton value="Save" action="#{pcontroller.save}" />
+						<b:commandButton value="#{bundle.ProjectButtonSave}" action="#{pcontroller.save}" />
 					</div>
 				</h:form>
 			</f:view>
