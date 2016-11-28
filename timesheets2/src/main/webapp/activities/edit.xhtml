@@ -15,20 +15,19 @@
 <h:body>
 	<ui:composition template="/template.xhtml">
 		<ui:define name="body">
-			<h2 class="page-title">Aktivita</h2>
 			<f:view>
+			<f:loadBundle basename="timesheets2.resources.Messages" var="bundle"/>
 				<h:form>
-					<b:inputText value="#{acontroller.activity.id}" id="id"
-						type="hidden" />
+					<h2 class="page-title"><h:outputText value="#{bundle.ActivityTitle}"></h:outputText></h2>
+					<b:inputText value="#{acontroller.activity.id}" id="id" type="hidden" />
 					<div class="form-group">
-						<label><h:outputText value='Název' /></label>
-						<b:inputText id="txtActivityName" placeholder="Název"
-							value="#{acontroller.activity.name}" required="true" required-message="Název aktivity musí být uveden">							
-						</b:inputText>
+						<label><h:outputText value="#{bundle.ActivityLabelName}" /></label>
+						<b:inputText id="txtActivityName" placeholder="#{bundle.ActivityPlaceholderName}"
+							value="#{acontroller.activity.name}" required="true" required-message="#{bundle.ActivityErrorRequired}" validator="#{acontroller.validateName}"/>
 						<h:message id="errorsName" for="txtActivityName" errorStyle="color:red"></h:message>
 					</div>
 					<div class="form-group">
-						<b:commandButton value="Save" action="#{acontroller.save}" />
+						<b:commandButton value="#{bundle.ActivityButtonSave}" action="#{acontroller.save}" />
 					</div>
 				</h:form>
 			</f:view>
